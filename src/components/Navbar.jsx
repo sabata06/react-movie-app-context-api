@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
 // Initialization for ES Users
 import { Collapse, Dropdown, initTE } from "tw-elements";
+import { AuthContext } from "../context/AuthContext";
 initTE({ Collapse, Dropdown });
 
 const Navbar = () => {
-  const currentUser = { displayName: "sabata" };
+  // const currentUser = { displayName: "sabata" };
+  const {currentUser} = useContext(AuthContext)
   return (
     <div>
       <nav
