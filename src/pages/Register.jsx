@@ -3,15 +3,16 @@ import GoogleIcon from "../assets/icons/GoogleIcon";
 import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const {createUser} = useContext(AuthContext)
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    createUser(email, password)
-  };
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const {createUser, signUpProvider} = useContext(AuthContext)
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    const displayName = `${firstName} ${lastName}`
+    createUser(email, password, displayName)
+  }
   return (
     <div className="overflow-hidden flex-1 h-screen justify-center items-center bg-[#23242a]">
       <div className={`form-container mt-[5vh] w-[380px] h-[580px]`}>
@@ -26,7 +27,7 @@ const Register = () => {
               className="peer"
               placeholder=" "
               required
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={(e)=> setFirstName(e.target.value)}
             />
             <label htmlFor="floating_email">First Name</label>
           </div>
@@ -37,7 +38,7 @@ const Register = () => {
               required
               className="peer"
               placeholder=" "
-              onChange={(e) => setlastName(e.target.value)}
+              onChange={(e)=> setLastName(e.target.value)}
             />
             <label htmlFor="floating_text">Last Name</label>
           </div>
@@ -48,7 +49,7 @@ const Register = () => {
               className="peer"
               placeholder=" "
               required
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e)=> setEmail(e.target.value)}
             />
             <label htmlFor="floating_email">Email</label>
           </div>
@@ -59,7 +60,7 @@ const Register = () => {
               className="peer"
               placeholder=" "
               required
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e)=> setPassword(e.target.value)}
             />
             <label htmlFor="floating_password">Password</label>
           </div>
@@ -69,7 +70,7 @@ const Register = () => {
           <button
             className="flex justify-between text-center btn-danger"
             type="button"
-            
+            onClick={()=> signUpProvider()}
           >
             Continue with Google
             <GoogleIcon color="currentColor" />

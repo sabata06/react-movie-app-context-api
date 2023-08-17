@@ -10,8 +10,8 @@ import {
 import { auth } from "./../auth/firebase";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-// import { toastSuccessNotify } from "../helpers/ToastNotify";
-// import { toastErrorNotify } from "./../helpers/ToastNotify";
+import { toastSuccessNotify } from "../helpers/ToastNotify";
+import { toastErrorNotify } from "./../helpers/ToastNotify";
 import { useState } from "react";
 
 export const AuthContext = createContext();
@@ -31,9 +31,9 @@ const AuthContextProvider = ({ children }) => {
       });
 
       navigate("/");
-    //   toastSuccessNotify("Registered Successfully!");
+      toastSuccessNotify("Registered Successfully!");
     } catch (error) {
-    //   toastErrorNotify(error.message);
+      toastErrorNotify(error.message);
     }
   };
 
@@ -41,9 +41,9 @@ const AuthContextProvider = ({ children }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
-    //   toastSuccessNotify("Logged in Successfully!");
+      toastSuccessNotify("Logged in Successfully!");
     } catch (error) {
-    //   toastErrorNotify(error.message);
+      toastErrorNotify(error.message);
     }
   };
 
@@ -70,7 +70,7 @@ const AuthContextProvider = ({ children }) => {
       .then((result) => {
         console.log(result);
         navigate("/");
-        // toastSuccessNotify("Logged in succesfully!");
+        toastSuccessNotify("Logged in succesfully!");
       })
       .catch((error) => {
         console.log(error);

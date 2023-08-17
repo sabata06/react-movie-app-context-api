@@ -7,7 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 initTE({ Collapse, Dropdown });
 
 const Navbar = () => {
-  // const currentUser = { displayName: "sabata" };
+  
   const {currentUser, logout} = useContext(AuthContext)
   return (
     <div>
