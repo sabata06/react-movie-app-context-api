@@ -18,7 +18,7 @@ export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("");
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     userObserver();
   }, []);
@@ -30,7 +30,7 @@ const AuthContextProvider = ({ children }) => {
         displayName: displayName,
       });
 
-    //   navigate("/");
+      navigate("/");
     //   toastSuccessNotify("Registered Successfully!");
     } catch (error) {
     //   toastErrorNotify(error.message);
@@ -40,7 +40,7 @@ const AuthContextProvider = ({ children }) => {
   const signIn = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-    //   navigate("/");
+      navigate("/");
     //   toastSuccessNotify("Logged in Successfully!");
     } catch (error) {
     //   toastErrorNotify(error.message);
@@ -69,7 +69,7 @@ const AuthContextProvider = ({ children }) => {
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
-        // navigate("/");
+        navigate("/");
         // toastSuccessNotify("Logged in succesfully!");
       })
       .catch((error) => {
