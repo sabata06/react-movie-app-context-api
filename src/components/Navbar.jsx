@@ -5,7 +5,13 @@ import avatar from "../assets/icons/avatar.png";
 import Switch from "./Switch";
 import FavComp from "./FavComp";
 import { MovieContext } from "../context/MovieContext";
+import {
+  Collapse,
+  Dropdown,
+  initTE,
+} from "tw-elements";
 
+initTE({ Collapse, Dropdown });
 const Navbar = () => {
   const { currentUser, logOut } = useContext(AuthContext);
   const { favorites } = useContext(MovieContext);
